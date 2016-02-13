@@ -13,5 +13,5 @@ public interface TextService {
 
     Text createText(Text text);
     Text updateText(Text text);
-    void removeText(Text text);
+    void removeText(String id);
 }

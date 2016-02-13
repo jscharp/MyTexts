@@ -81,17 +81,16 @@ public class TextServiceImplTest {
     @Test
     public void testRemoveText() throws Exception {
         Text text = new Text();
-        text.setId("someId");
+        String someId = "someId";
+        text.setId(someId);
 
-        textService.removeText(text);
+        textService.removeText(someId);
 
         verify(textRepository).delete(eq(text));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testRemoveTextWithoutId() throws Exception {
-        Text newText = new Text();
-
-        textService.removeText(newText);
+        textService.removeText(null);
     }
 }

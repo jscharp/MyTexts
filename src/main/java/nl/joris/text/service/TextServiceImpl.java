@@ -48,10 +48,10 @@ public class TextServiceImpl implements TextService {
     }
 
     @Override
-    public void removeText(Text text) {
+    public void removeText(String id) {
 
-        Assert.notNull(text.getId());
+        Assert.notNull(id);
 
-        textRepository.delete(text);
+        textRepository.delete(id);
     }
 }
