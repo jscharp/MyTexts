@@ -2,9 +2,7 @@ package nl.joris.text.service;
 
 import nl.joris.text.Text;
 import nl.joris.text.repository.TextRepository;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -35,6 +33,15 @@ public class TextServiceImplTest {
         textService.findAll();
 
         verify(textRepository).findAll();
+    }
+
+    @Test
+    public void testFindOne() throws Exception {
+
+        String id = "someId";
+        textService.findOne(id);
+
+        verify(textRepository).findOne(eq(id));
     }
 
     @Test
