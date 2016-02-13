@@ -28,6 +28,12 @@ public class TextServiceImpl implements TextService {
     }
 
     @Override
+    public Text findOne(String id) {
+
+        return textRepository.findOne(id);
+    }
+
+    @Override
     public Text createText(Text text) {
 
         return textRepository.save(text);

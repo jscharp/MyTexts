@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface TextService {
 
-    Iterable<Text> findAll();
+    List<Text> findAll();
     List<Text> findBySearchQuery(String searchQuery);
+
+    Text findOne(String id);
 
     Text createText(Text text);
     Text updateText(Text text);

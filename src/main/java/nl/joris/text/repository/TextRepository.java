@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface TextRepository extends CrudRepository<Text, Long> {
+public interface TextRepository extends CrudRepository<Text, String> {
 
     List<Text> findByContentContaining(String searchQuery);
 }
