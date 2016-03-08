@@ -86,7 +86,7 @@ public class TextServiceImplTest {
 
         textService.removeText(someId);
 
-        verify(textRepository).delete(eq(text));
+        verify(textRepository).delete(eq(someId));
     }
 
     @Test(expected = IllegalArgumentException.class)
