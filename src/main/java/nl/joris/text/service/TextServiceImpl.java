@@ -24,7 +24,7 @@ public class TextServiceImpl implements TextService {
     @Override
     public List<Text> findBySearchQuery(String searchQuery) {
 
-        return textRepository.findByContentContaining(searchQuery);
+        return textRepository.findByContentContainingOrTitleContaining(searchQuery, searchQuery);
     }
 
     @Override

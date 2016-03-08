@@ -43,7 +43,7 @@ public class TextRepositoryTest {
         irrelevantText.setContent("Nobody wants me ;(");
         textRepository.save(irrelevantText);
 
-        List<Text> foundText = textRepository.findByContentContaining("tent");
+        List<Text> foundText = textRepository.findByContentContainingOrTitleContaining("tent", "tent");
 
         assertEquals("The text should be found", 1, foundText.size());
         assertEquals("Should match the expected text", textThatShouldBeFound, foundText.get(0));

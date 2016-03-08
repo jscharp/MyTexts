@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TextRepository extends CrudRepository<Text, String> {
 
-    List<Text> findByContentContaining(String searchQuery);
+    List<Text> findByContentContainingOrTitleContaining(String contentSearchQuery, String titleSearchQuery);
 }

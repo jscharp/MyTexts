@@ -50,7 +50,7 @@ public class TextServiceImplTest {
         String searchQuery = "searchQuery";
         textService.findBySearchQuery(searchQuery);
 
-        verify(textRepository).findByContentContaining(eq(searchQuery));
+        verify(textRepository).findByContentContainingOrTitleContaining(eq(searchQuery), eq(searchQuery));
     }
 
     @Test
