@@ -1,10 +1,11 @@
 package nl.joris.text;
 
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import java.util.Date;
 
 @Document(indexName = "text_index")
 public class Text {
@@ -15,6 +16,7 @@ public class Text {
     private String title;
     private String content;
     private Integer score;
+    private Date createdOn;
 
     public String getId() {
         return id;
@@ -48,6 +50,14 @@ public class Text {
         this.score = score;
     }
 
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,6 +71,7 @@ public class Text {
                 .append(title, text.title)
                 .append(content, text.content)
                 .append(score, text.score)
+                .append(createdOn, text.createdOn)
                 .isEquals();
     }
 
@@ -71,6 +82,7 @@ public class Text {
                 .append(title)
                 .append(content)
                 .append(score)
+                .append(createdOn)
                 .toHashCode();
     }
 }

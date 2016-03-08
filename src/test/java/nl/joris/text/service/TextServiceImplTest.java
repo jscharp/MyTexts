@@ -10,6 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -92,5 +93,13 @@ public class TextServiceImplTest {
     @Test(expected = IllegalArgumentException.class)
     public void testRemoveTextWithoutId() throws Exception {
         textService.removeText(null);
+    }
+
+    @Test
+    public void shouldSetCreatedOnDate() {
+        Text newText = new Text();
+        textService.createText(newText);
+
+        assertNotNull(newText.getCreatedOn());
     }
 }
