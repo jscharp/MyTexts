@@ -31,7 +31,7 @@ public class TextRepositoryTest {
     }
 
     @Test
-    public void testFindByContentContains() {
+    public void shouldFindTextBySearchingOnContent() {
         Text textThatShouldBeFound = new Text();
 
         textThatShouldBeFound.setTitle("title");
@@ -48,5 +48,24 @@ public class TextRepositoryTest {
         assertEquals("The text should be found", 1, foundText.size());
         assertEquals("Should match the expected text", textThatShouldBeFound, foundText.get(0));
 
+    }
+
+    @Test
+    public void shouldFindTextBySearchingOnTitle() {
+        Text textThatShouldBeFound = new Text();
+
+        textThatShouldBeFound.setTitle("title");
+        textThatShouldBeFound.setContent("Some content I can search on..");
+        textRepository.save(textThatShouldBeFound);
+
+        Text irrelevantText = new Text();
+        irrelevantText.setTitle("So very irrelevant!");
+        irrelevantText.setContent("Nobody wants me ;(");
+        textRepository.save(irrelevantText);
+
+        List<Text> foundText = textRepository.findByContentContainingOrTitleContaining("itl", "itl");
+
+        assertEquals("The text should be found", 1, foundText.size());
+        assertEquals("Should match the expected text", textThatShouldBeFound, foundText.get(0));
     }
 }
